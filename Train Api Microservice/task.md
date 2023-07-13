@@ -4,12 +4,16 @@
 
 // Generated Authorization token for page access...
 
-![image](https://github.com/GitSam67/200303105038/assets/93246796/866fcda7-5bff-4863-8c8b-8beb958a276e)
+![Alt text](image-6.png)
 
 
 // Set token as Bearer token & called trains api url as GET method
 
 ![Alt text](image.png)
 
-![Alt text](image-1.png)
-![Alt text](image-2.png)
+![Alt text](image-4.png)
+![Alt text](image-5.png)
+
+// Get method for listing specific train based on train number...
+
+![Alt text](image-3.png)
