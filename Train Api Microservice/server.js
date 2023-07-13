@@ -5,6 +5,8 @@ const PORT = process.env.PORT || 8000;
 
 app.use(express.json());
 
+var token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODkyMzQxMTgsImNvbXBhbnlOYW1lIjoiVHJhaW4gQ2VudHJhbCIsImNsaWVudElEIjoiNjcxYTkyM2UtNDhmOC00NmE0LWE0NmItZjkyM2E4ZmMyNWViIiwib3duZXJOYW1lIjoiIiwib3duZXJFbWFpbCI6IiIsInJvbGxObyI6IjIwMDMwMzEwNTAzOCJ9.y9K4vw7Fe80LRzb_sJF5iXLGFeGLSMltyvzakNwX9zM'; 
+
 let data = {
     "companyName": "Train Central",
     "ownerName": "Samanuay Nambiar",
@@ -46,7 +48,7 @@ app.post('/login', (req,res)=>{
 app.get('/trains', async (req, res) => {
     fetch('http://20.244.56.144/train/trains', {
         method: 'GET',
-        headers: {'Authorization' : 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODkyMzMzMzAsImNvbXBhbnlOYW1lIjoiVHJhaW4gQ2VudHJhbCIsImNsaWVudElEIjoiNjcxYTkyM2UtNDhmOC00NmE0LWE0NmItZjkyM2E4ZmMyNWViIiwib3duZXJOYW1lIjoiIiwib3duZXJFbWFpbCI6IiIsInJvbGxObyI6IjIwMDMwMzEwNTAzOCJ9.BCI_GVJobMRB1X0kB0ykMY58uFOSS4mqp3JJQ9La23E'}
+        headers: {'Authorization' : `Bearer ${token}`}
     })
         .then(res => res.json())
         .then(json => {
@@ -58,7 +60,7 @@ app.get('/trains', async (req, res) => {
 app.get('/trains/2344', async (req, res) => {
     fetch('http://20.244.56.144/train/trains/2344', {
         method: 'GET',
-        headers: {'Authorization' : 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODkyMzMzMzAsImNvbXBhbnlOYW1lIjoiVHJhaW4gQ2VudHJhbCIsImNsaWVudElEIjoiNjcxYTkyM2UtNDhmOC00NmE0LWE0NmItZjkyM2E4ZmMyNWViIiwib3duZXJOYW1lIjoiIiwib3duZXJFbWFpbCI6IiIsInJvbGxObyI6IjIwMDMwMzEwNTAzOCJ9.BCI_GVJobMRB1X0kB0ykMY58uFOSS4mqp3JJQ9La23E'}
+        headers: {'Authorization' : `Bearer ${token}`}
     })
         .then(res => res.json())
         .then(json => {
