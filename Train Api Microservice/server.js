@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 8000;
 
 app.use(express.json());
 
-var token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODkyMzQxMTgsImNvbXBhbnlOYW1lIjoiVHJhaW4gQ2VudHJhbCIsImNsaWVudElEIjoiNjcxYTkyM2UtNDhmOC00NmE0LWE0NmItZjkyM2E4ZmMyNWViIiwib3duZXJOYW1lIjoiIiwib3duZXJFbWFpbCI6IiIsInJvbGxObyI6IjIwMDMwMzEwNTAzOCJ9.y9K4vw7Fe80LRzb_sJF5iXLGFeGLSMltyvzakNwX9zM'; 
+var token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODkyNDkyNDMsImNvbXBhbnlOYW1lIjoiVHJhaW4gQ2VudHJhbCIsImNsaWVudElEIjoiNjcxYTkyM2UtNDhmOC00NmE0LWE0NmItZjkyM2E4ZmMyNWViIiwib3duZXJOYW1lIjoiIiwib3duZXJFbWFpbCI6IiIsInJvbGxObyI6IjIwMDMwMzEwNTAzOCJ9.Za8dfKKoLHP_pKEJNRZcJ847YyLMzgx1CO0GL1dpVVo'; 
 
 let data = {
     "companyName": "Train Central",
@@ -23,6 +23,8 @@ let authData = {
     "rollNo": "200303105038",
     "clientSecret": "EktBDrWMYZTPdmDA"
 }
+
+let response = [];
 
 app.post('/register', (req,res)=>{
     fetch('http://20.244.56.144/train/register', {
@@ -52,7 +54,11 @@ app.get('/trains', async (req, res) => {
     })
         .then(res => res.json())
         .then(json => {
-            console.log(json);
+            response.push(json);
+            (response[0]).sort((a,b)=>{
+                return (a.price.sleeper - b.price.sleeper && b.departureTime.Hours - a.departureTime.Hours);
+            })
+            console.log(response[0]);
         })
 });
 
